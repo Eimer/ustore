@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap" rel="stylesheet">
   <title>ustore</title>
 </head>
 
@@ -145,13 +146,29 @@
       </div>
       <div class="right-content">
         <div class="head-r-content">
-          <span> Popular products</span>
-
+          <span>Popular products</span>
+        <select name="sorting" id="sorting">
+          <option value="s1">Unsorted</option>
+          <option value="s2">By Name</option>
+          <option value="s3">Expensive first</option>
+          <option value="s4">Dearest first</option>
+        </select>
         </div>
-        <div class="mid-r-content">
-        </div>
+        <section class="mid-r-content">
+          <div class="good">
+            <div class="food-img">
+              <img src="assets/images/devices_icons/tv.png" alt="">
+            </div>
+            <div class="food-descr">
+                <span>test</span>
+            </div>
+            <div class="food-footer">
+                <span>Price</span>
+                <div class="plus"></div>
+            </div>
+          </div>
+        </section >
         <div class="pages">
-
         </div>
       </div>
     </div>
@@ -208,5 +225,5 @@
   </footer>
   </div>
 </body>
-
+<script src="js/script.js"></script>
 </html>

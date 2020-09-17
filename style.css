@@ -111,7 +111,7 @@ body {
 
 .logo > img {
     height: 100%;
-    transform: scale(1.6);
+    transform: scale(1.3);
 }
 
 .logo > span {
@@ -120,6 +120,7 @@ body {
     font-family: 'Kumbh Sans', sans-serif;
     color: white;
     font-size: 3em;
+    font-weight: 700;
     font-style: italic;
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -475,24 +476,133 @@ body {
 }
 
 .head-r-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: relative;
     width: 95%;
     margin: 0 auto;
     height: 80px;
-    border: 1px solid red;
+    border-bottom: 1px solid rgb(195, 195, 195);
+}
+
+.head-r-content > span {
+    margin-left: 20px;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 2em;
 }
 
 .mid-r-content {
     width: 95%;
     margin: 0 auto;
+    margin-top: 50px;
     height: 1000px;
-    border: 1px solid red;    
+    border: 1px solid red;
 }
 
+#sorting {
+    vertical-align: middle;
+    outline: none;
+    margin-right: 20px;
+    height: 30px;
+    width: 150px;
+    border: 1px solid rgb(195, 195, 195);
+    border-radius: 6px;
+}
+
+/* good */
+
+.good {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    float: left;
+    border: 1px solid green;
+    width: 25%;
+    height: 380px;
+}
+
+.food-img {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+    height: 60%;
+    border: 1px solid blue;
+}
+
+.food-img > img {
+    width: 100%;
+}
+
+.food-descr {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    border: 1px solid red;
+}
+
+.food-descr > span {
+    text-align: center;
+    width: 100%;
+}
+
+.food-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 15%;
+    border: 1px solid yellow;
+    /* padding-left: 10px; */
+}
+
+/* plus */
+
+.plus {
+    /* margin-right: 10px; */
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background:rgb(0, 225, 0);
+    border-radius: 50%;
+  }
+  
+  .plus:before,
+  .plus:after {
+    content: "";
+    position:absolute;
+    background:#fff;
+  }
+  
+  .plus:before {
+    left:50%;
+    top:10px;
+    bottom:10px;
+    width:2px;
+    transform:translateX(-50%);
+  }
+  
+  .plus:after {
+    top:50%;
+    left:10px;
+    right:10px;
+    height:2px;
+    transform:translateY(-50%);
+  }
+
+  .plus:hover {
+    background:rgb(0, 210, 0);
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+
+/* */
 .pages {
     border: 1px solid red;
     width: 95%;
-    margin: 0 auto;
     height: 50px;
 }
 
