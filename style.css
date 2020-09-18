@@ -497,7 +497,7 @@ body {
     margin: 0 auto;
     margin-top: 50px;
     height: 1000px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 #sorting {
@@ -513,27 +513,41 @@ body {
 /* good */
 
 .good {
+    position: relative;
     padding: 10px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    align-items: center;
     float: left;
-    border: 1px solid green;
+    /* border: 1px solid green; */
+    border-right: 1px solid rgb(195, 195, 195);
+    border-bottom: 1px solid rgb(195, 195, 195);
     width: 25%;
     height: 380px;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 1.2em;
 }
 
 .food-img {
     display: flex;
     align-items: center;
-    width: 60%;
-    margin: 0 auto;
+    width: 150px;
+    max-width: 100%;
     height: 60%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .food-img > img {
     width: 100%;
+}
+
+.flame {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 10px;
+    top: 10px;
 }
 
 .food-descr {
@@ -541,10 +555,11 @@ body {
     align-items: center;
     width: 100%;
     height: 25%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .food-descr > span {
+    line-height: 150%;
     text-align: center;
     width: 100%;
 }
@@ -555,10 +570,17 @@ body {
     justify-content: space-between;
     width: 100%;
     height: 15%;
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     /* padding-left: 10px; */
 }
 
+.food-footer > span {
+    font-weight: bold;
+    margin-left: 10px;
+    color: red;
+    font-size: 1.5em;
+    font-weight: normal;
+}
 /* plus */
 
 .plus {
@@ -568,6 +590,7 @@ body {
     height: 40px;
     background:rgb(0, 225, 0);
     border-radius: 50%;
+    margin-right: 10px;
   }
   
   .plus:before,
@@ -596,14 +619,27 @@ body {
   .plus:hover {
     background:rgb(0, 210, 0);
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    transition: 0.3s;
+    transition: 0.2s;
   }
 
 /* */
 .pages {
+    display: flex;
+    justify-content: center;
     border: 1px solid red;
     width: 95%;
     height: 50px;
+}
+
+.page-numbers {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    width: 80px;
+    height: 100%;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.2em;
 }
 
 /* foter */
@@ -617,6 +653,5 @@ body {
 .footer-pay > img {
     height: 100%;
 }
-
 
 /* sort */
