@@ -1,5 +1,8 @@
 "use strict"
 
+import {Good} from "./goods.js";
+import {goodCard} from "./goods.js";
+
 let parseJson = {
     getName: function(DATA) {
 
@@ -7,14 +10,6 @@ let parseJson = {
 }
 //
 
-function ttt(elem) {
-    console.log(elem);
-}
-class good {
-    constructor(jsonStr) {
-
-    }
-}
 async function getJson() {
     let resJson;
     let jsonStr = await fetch("js/goods.json")
@@ -26,17 +21,32 @@ async function getJson() {
     });
 }
 
-async function getAllGoods() {
+async function AllGoods() {
     let allGoods = await getJson();
     return allGoods;
 }
 
-getAllGoods()
-.then((e)=>{
-    // console.log(e[0].category);
-    ttt(e[0].category);
+AllGoods()
+.then((jsonObj)=>{
+    let good = new Good(jsonObj[0]);
+    let good1 = new Good(jsonObj[1]);
+
+    goodCard.renderCard(good);
+    goodCard.renderCard(good);
+    goodCard.renderCard(good);
+    goodCard.renderCard(good);
+    
+
+
+
+
 })
-.catch((e)=>console.log(e))
+.catch((e)=>console.log(e));
+
+let createGoodCard = () => {
+
+}
+
 // console.log(test);
 
 // create good

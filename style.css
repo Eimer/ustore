@@ -17,7 +17,8 @@ body {
     padding: 5px;
 }
 .header-one {
-    width: 1500px;
+    /* width: 1500px; */
+    width: 100%;
     height: 35%;
     display: flex;
     /* border: 1px solid blue; */
@@ -41,7 +42,7 @@ body {
 }
 
 .numbers {
-    margin-left: 90px;
+    margin-left: 95px;
     display: flex;
     /* border: 1px solid black; */
     justify-content: space-between;
@@ -91,8 +92,11 @@ body {
 }
 
 .header-two {
-    width: 1500px;
+    width: 100%;
+    /* width: 1500px; */
+    margin: 0 auto;
     height: 65%;
+    max-width: 100%;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -104,7 +108,7 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    width: 240px;
+    width: 340px;
     height: 100%;
     /* border: 1px solid black; */
 }
@@ -142,7 +146,7 @@ body {
 .search-block {
     position: relative;
     height: 35px;
-    width: 400px;
+    width: 40%;
     align-items: center;
     /* border: 1px solid yellow; */
     margin: 0 auto;
@@ -443,7 +447,7 @@ body {
     justify-content: space-around;
     /* border: 1px solid red; */
     margin: 0 auto;
-    width: 1400px;
+    width: 100%;
     height: 75px;
 }
 
@@ -496,7 +500,7 @@ body {
     width: 95%;
     margin: 0 auto;
     margin-top: 50px;
-    height: 1000px;
+    height: 1150px;
     /* border: 1px solid red; */
 }
 
@@ -514,43 +518,44 @@ body {
 
 .good {
     position: relative;
-    padding: 10px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     align-items: center;
     float: left;
     /* border: 1px solid green; */
-    border-right: 1px solid rgb(195, 195, 195);
-    border-bottom: 1px solid rgb(195, 195, 195);
+    border-right: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(200, 200, 200);
     width: 25%;
     height: 380px;
     font-family: 'Kumbh Sans', sans-serif;
     font-size: 1.2em;
 }
 
-.food-img {
+.good-img {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     width: 150px;
     max-width: 100%;
     height: 60%;
     /* border: 1px solid blue; */
 }
 
-.food-img > img {
-    width: 100%;
+.good-img > img {
+    height: 100%;
 }
 
 .flame {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    right: 10px;
+    width: 15%;
+    /* height: 40px; */
+    right: 1%;
     top: 10px;
 }
 
-.food-descr {
+.good-descr {
     display: flex;
     align-items: center;
     width: 100%;
@@ -558,13 +563,13 @@ body {
     /* border: 1px solid red; */
 }
 
-.food-descr > span {
+.good-descr > span {
     line-height: 150%;
     text-align: center;
     width: 100%;
 }
 
-.food-footer {
+.good-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -574,7 +579,7 @@ body {
     /* padding-left: 10px; */
 }
 
-.food-footer > span {
+.good-footer > span {
     font-weight: bold;
     margin-left: 10px;
     color: red;
@@ -654,4 +659,103 @@ body {
     height: 100%;
 }
 
-/* sort */
+
+
+@media screen and (max-width : 1366px) {
+    .logo {
+        margin-left: 10px;
+    }
+    .logo > span {
+        display: none;
+    }
+    .logo > img {
+        transform: scale(1.1);
+    }
+    .logo {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width : 1280px) {
+    .good-descr {
+        font-size: 0.8em;
+    }
+    .logo {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width : 1024px) {
+    .good {
+        width: 33.3%;
+    }
+    .header-one {
+        display: none;
+    }
+    .header {
+        height: 70px;
+        justify-content: center;
+    }
+    .search-block {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width : 860px) {
+    /* .flame {
+        transform: scale(0.6);
+        right: -5px;
+    } */
+}
+
+@media screen and (max-width : 800px) {
+    .good {
+        width: 50%;
+    }
+    .good-descr {
+        font-size: 1em;
+    }
+    .logo {
+        width: 100px;
+    }
+
+}
+
+@media screen and (max-width : 768px) {
+    .good-descr {
+        font-size: 0.8em;
+    }
+    .logo {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width : 620px) {
+    .good-descr {
+        font-size: 1em;
+    }
+    .left-content {
+        display: none;
+    }
+}
+@media screen and (max-width : 500px) {
+    .good-descr {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width : 440px) {
+    .good {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width : 320px) {
+    .good {
+        width: 100%;
+    }
+    .left-content {
+        display: none;
+    }
+}
