@@ -35,10 +35,10 @@ AllGoods()
     goodCard.renderCard(good);
     goodCard.renderCard(good);
     goodCard.renderCard(good);
-    
-
-
-
+    goodCard.renderCard(good);
+    goodCard.renderCard(good);
+    goodCard.renderCard(good);
+    goodCard.renderCard(good);
 
 })
 .catch((e)=>console.log(e));
@@ -47,7 +47,14 @@ let createGoodCard = () => {
 
 }
 
-// console.log(test);
+$(".bucket-down").hide();
+$(".bucket-block").mouseenter(function () {
+    $(".bucket-down").slideDown(200);
+})
+$(".bucket-block").mouseleave(function () {
+    $(".bucket-down").hide();
+})
+
 
 // create good
 

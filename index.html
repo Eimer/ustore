@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap" rel="stylesheet">
   <title>ustore</title>
+  <script src="js/jQuery.js"></script>
   <script type="module" src="./js/goods.js"></script>
   <script type="module" src="./js/supporting.js"></script>
 </head>
@@ -47,7 +48,13 @@
       </div>
       <div class="bucket-block">
         <img src="assets/images/bucket.png" alt="error_bucket">
+        <div class="bucket-down">
+          <div class="bucket-items">
+
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
   <main>
@@ -69,7 +76,7 @@
             </li>
             <li>
               <img src="assets/images/devices_icons/notebook.png" alt="error-img">
-              <span> Notebook</span>
+              <span> Notebooks</span>
             </li>
             <li>
               <img src="assets/images/devices_icons/smartphone.png" alt="error-img">
@@ -90,6 +97,27 @@
           </ul>
         </div>
         <div class="bottom-left-content">
+          <div class="filter">
+            <span>Price</span>
+            <div class="f-price">
+              <input type="number" name="first-price" min="0", max="99999" value="0" maxlength="5">
+              &mdash;
+              <input type="number" name="second-price" min="0", max="99999" value="99999" maxlength="5">
+            </div>
+            <div class="good-list">
+              <ul>
+                <li><a></a>Consoles</li>
+                <li><a></a>Tablets</li>
+                <li><a></a>Mp3 Players</li>
+                <li><a></a>Notebooks</li>
+                <li><a></a>Smartphones</li>
+                <li><a></a>TV</li>
+                <li><a></a>Computers</li>
+                <li><a></a>Watches</li>
+              </ul>
+            </div>
+            <input type="button" value="apply" class="apply-filter">
+          </div>
           <div class="address">
             <ul class="places">
               <li>
@@ -157,7 +185,6 @@
           </select>
         </div>
         <section class="mid-r-content">
-          
         </section>
         <div class="pages">
           <div class="page-numbers">
@@ -199,9 +226,6 @@
           <span>Payment</span>
           <span>Public offer</span>
         </div>
-      </div>
-      <div class="righted">
-
       </div>
     </div>
     <div class="under-block">
