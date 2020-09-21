@@ -100,20 +100,60 @@
           <div class="filter">
             <span>Price</span>
             <div class="f-price">
-              <input type="number" name="first-price" min="0", max="99999" value="0" maxlength="5">
+              <input type="number" name="first-price" min="0" , max="99999" value="0" maxlength="5">
               &mdash;
-              <input type="number" name="second-price" min="0", max="99999" value="99999" maxlength="5">
+              <input type="number" name="second-price" min="0" , max="99999" value="99999" maxlength="5">
             </div>
             <div class="good-list">
               <ul>
-                <li><a></a>Consoles</li>
-                <li><a></a>Tablets</li>
-                <li><a></a>Mp3 Players</li>
-                <li><a></a>Notebooks</li>
-                <li><a></a>Smartphones</li>
-                <li><a></a>TV</li>
-                <li><a></a>Computers</li>
-                <li><a></a>Watches</li>
+                <label for="Consoles" class="f-choose-name">
+                  <li>
+                    <input type="checkbox" name="Consoles" id="Consoles">
+                    <span class="opt"></span>
+                    Consoles</li>
+                </label>
+                <label for="Tablets" class="f-choose-name">
+                  <li>
+                    <input type="checkbox" name="Tablets" id="Tablets">
+                    <span class="opt"></span>
+                    Tablets</li>
+                </label>
+                <label for="Mp3-Players" class="f-choose-name">
+                  <li>
+                    <input type="checkbox" name="Mp3-Players" id="Mp3-Players">
+                    <span class="opt"></span>
+                    Mp3 Players</li>
+                </label>
+                <label for="Notebooks" class="f-choose-name">
+                  <li>
+                    <input type="checkbox" name="Notebooks" id="Notebooks">
+                    <span class="opt"></span>
+                    Notebooks</li>
+                </label>
+                <label for="Smartphones" class="f-choose-name">
+                  <li>
+                    <input type="checkbox" name="Smartphones" id="Smartphones">
+                    <span class="opt"></span>
+                    Smartphones</li>
+                </label>
+                <label for="TV" class="f-choose-name">
+                  <li>
+                    <input type="checkbox" name="TV" id="TV">
+                    <span class="opt"></span>
+                    TV</li>
+                </label>
+                <label for="Computers" class="f-choose-name">
+                  <li>
+                    <input type="checkbox" name="Computers" id="Computers">
+                    <span class="opt"></span>
+                    Computers</li>
+                </label>
+                <label for="Watches" class="f-choose-name">
+                  <li>
+                    <input type="checkbox" name="Watches" id="Watches">
+                    <span class="opt"></span>
+                    Watches</li>
+                </label>
               </ul>
             </div>
             <input type="button" value="apply" class="apply-filter">

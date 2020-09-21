@@ -406,6 +406,12 @@ body {
     padding-top: 10px;
 }
 
+.filter > span {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+}
+
 .f-price {
     width: 100%;
     height: auto;
@@ -423,9 +429,40 @@ body {
     padding-left: 10px;
 }
 
+.opt {
+    position: absolute;
+    border: 1px solid rgb(195, 195, 195);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    left: 0;
+    top: -5px;
+}
+
+.f-choose-name > li > input {
+    display: none;
+}
+
+.f-choose-name > li > input:checked + span {
+    background: rgb(0, 200, 0);
+    transition: 0.2s;
+}
+
+.f-choose-name > li > input:checked + span:after {
+    position: absolute;
+    content: "\2713";
+    color: white;
+    left: 6px;
+    top: 4px;
+}
+
 .good-list {
     width: 100%;
     height: auto;
+    font-family: 'Kumbh Sans', sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     /* border: 1px solid green; */
 }
 
@@ -433,23 +470,15 @@ body {
     list-style-type: none;
 }
 
-.good-list > ul > li {
-    display: flex;
+
+.good-list > ul > label > li {
+    position: relative;
     margin: 20px;
+    padding-left: 35px;
 }
 
-.good-list > ul > li > a {
-    margin-right: 5px;
-    margin-top: -2px;
-    /* background: red; */
-    border: 1px solid rgb(195, 195, 195);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-}
-
-.good-list > ul > li > a:active {
-    background: red;
+.good-list > ul > label > li:hover {
+    text-decoration: underline;
 }
 
 .apply-filter {
@@ -606,6 +635,7 @@ body {
     margin: 0 auto;
     margin-top: 50px;
     height: 1150px;
+    overflow: scroll;
     /* border: 1px solid red; */
 }
 

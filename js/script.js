@@ -17,6 +17,7 @@ async function getJson() {
         .then((data) => resJson = data.goods)
         .catch((e)=>console.log(e))
     return Promise.resolve(jsonStr).then(() => {
+        console.log(resJson);
         return resJson;
     });
 }
