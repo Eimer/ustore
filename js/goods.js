@@ -4,6 +4,15 @@ import {setCssAttr} from "./supporting.js";
 import {setText} from "./supporting.js";
 import {addElem} from "./supporting.js";
 
+export function createGoodsArr(jsonObj) {
+    let goodsArr = [];
+
+    for (let i = 0; jsonObj[i]; i++) {
+        goodsArr.push(new Good(jsonObj[i]));
+    }
+    return goodsArr;
+}
+
 export let goodCard = {
     createCard: function() {
         this.goodDiv = document.createElement("div");

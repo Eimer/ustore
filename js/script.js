@@ -2,12 +2,14 @@
 
 import {Good} from "./goods.js";
 import {goodCard} from "./goods.js";
+import {createGoodsArr} from "./goods.js";
+import {dropContent} from "./supporting.js";
+import {goodsInterface} from "./interfaces.js";
+// let parseJson = {
+//     getName: function(DATA) {
 
-let parseJson = {
-    getName: function(DATA) {
-
-    }
-}
+//     }
+// }
 //
 
 async function getJson() {
@@ -17,7 +19,6 @@ async function getJson() {
         .then((data) => resJson = data.goods)
         .catch((e)=>console.log(e))
     return Promise.resolve(jsonStr).then(() => {
-        console.log(resJson);
         return resJson;
     });
 }
@@ -27,19 +28,24 @@ async function AllGoods() {
     return allGoods;
 }
 
+// starting main script
+
+dropContent();
 AllGoods()
 .then((jsonObj)=>{
-    let good = new Good(jsonObj[0]);
-    let good1 = new Good(jsonObj[1]);
+    let goodsArr = createGoodsArr(jsonObj);
+    
+    goodsInterface.renderCards(goodsArr);
 
-    goodCard.renderCard(good);
-    goodCard.renderCard(good);
-    goodCard.renderCard(good);
-    goodCard.renderCard(good);
-    goodCard.renderCard(good);
-    goodCard.renderCard(good);
-    goodCard.renderCard(good);
-    goodCard.renderCard(good);
+    // let good1 = new Good(jsonObj[0]);
+
+    // goodCard.renderCard(good1);
+    // goodCard.renderCard(good1);
+    // goodCard.renderCard(good1);
+    // goodCard.renderCard(good1);
+    // goodCard.renderCard(good1);
+    // goodCard.renderCard(good1);
+    // goodCard.renderCard(good1);
 
 })
 .catch((e)=>console.log(e));
@@ -48,13 +54,6 @@ let createGoodCard = () => {
 
 }
 
-$(".bucket-down").hide();
-$(".bucket-block").mouseenter(function () {
-    $(".bucket-down").slideDown(200);
-})
-$(".bucket-block").mouseleave(function () {
-    $(".bucket-down").hide();
-})
 
 
 // create good
