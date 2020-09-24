@@ -4,15 +4,6 @@ import {setCssAttr} from "./supporting.js";
 import {setText} from "./supporting.js";
 import {addElem} from "./supporting.js";
 
-export function createGoodsArr(jsonObj) {
-    let goodsArr = [];
-
-    for (let i = 0; jsonObj[i]; i++) {
-        goodsArr.push(new Good(jsonObj[i]));
-    }
-    return goodsArr;
-}
-
 export let goodCard = {
     createCard: function() {
         this.goodDiv = document.createElement("div");
@@ -41,6 +32,7 @@ export let goodCard = {
         this.createCard();
         this.setCssClasses(Good);
         this.goodParentSection = document.getElementsByClassName("mid-r-content")[0];
+        // this.goodParentSection.innerHTML = "";
         addElem(this.goodParentSection, this.goodDiv);
         addElem(this.goodDiv, this.goodImgDiv);
         if (Good.isHot == "true")
@@ -51,7 +43,7 @@ export let goodCard = {
         addElem(this.goodFooterDiv, this.goodAddDiv);
         addElem(this.goodDescrDiv, this.goodDescrSpan);
         addElem(this.goodImgDiv, this.goodImg);
-        setText(this.goodFooterPrice, Good.price);
+        setText(this.goodFooterPrice, Good.price + '$');
         setText(this.goodDescrSpan, Good.name);
     },
 }

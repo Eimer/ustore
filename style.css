@@ -345,6 +345,8 @@ html {
     -moz-user-select: none;
     -khtml-user-select: none;
     user-select: none;
+    width: 100%;
+    vertical-align: middle;
 }
 
 .catalog-list > li:hover > span {
@@ -706,7 +708,8 @@ html {
 }
 
 .good-img > img {
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .flame {
@@ -923,9 +926,7 @@ html {
     .footer-info {
         height: 150px;
     }
-
 }
-
 
 @media screen and (max-width : 500px) {
     .good-descr {

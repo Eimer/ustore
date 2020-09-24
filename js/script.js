@@ -2,9 +2,13 @@
 
 import {Good} from "./goods.js";
 import {goodCard} from "./goods.js";
-import {createGoodsArr} from "./goods.js";
+import {createGoodsArr} from "./interfaces.js";
 import {dropContent} from "./supporting.js";
 import {goodsInterface} from "./interfaces.js";
+import {getJson} from "./interfaces.js";
+import {firstCreateGoodsArr} from "./interfaces.js";
+
+
 // let parseJson = {
 //     getName: function(DATA) {
 
@@ -12,16 +16,16 @@ import {goodsInterface} from "./interfaces.js";
 // }
 //
 
-async function getJson() {
-    let resJson;
-    let jsonStr = await fetch("js/goods.json")
-        .then((response) => response.json())
-        .then((data) => resJson = data.goods)
-        .catch((e)=>console.log(e))
-    return Promise.resolve(jsonStr).then(() => {
-        return resJson;
-    });
-}
+// async function getJson() {
+//     let resJson;
+//     let jsonStr = await fetch("js/goods.json")
+//         .then((response) => response.json())
+//         .then((data) => resJson = data.goods)
+//         .catch((e)=>console.log(e))
+//     return Promise.resolve(jsonStr).then(() => {
+//         return resJson;
+//     });
+// }
 
 async function AllGoods() {
     let allGoods = await getJson();
@@ -33,9 +37,14 @@ async function AllGoods() {
 dropContent();
 AllGoods()
 .then((jsonObj)=>{
-    let goodsArr = createGoodsArr(jsonObj);
+    let goodsArr = firstCreateGoodsArr(jsonObj);
     
     goodsInterface.renderCards(goodsArr);
+    goodsInterface.chooseCategory(jsonObj);
+    goodsInterface.chooseFilter(jsonObj);
+    
+    // test.addEventListener("click", chooseCategory);
+    
 
     // let good1 = new Good(jsonObj[0]);
 
