@@ -3,12 +3,15 @@ import {goodCard} from "./goods.js";
 import {Good} from "./goods.js";
 
 let filterOne = {
-    ativeFirstFilter: true,
+    ativeFirstFilter: false,
+    ativeSecondFilter: false,
+    ativeFindFilter: false,
     category: undefined,
     priceStart: 0,
     priceEnd: 99999,
     sorted: document.getElementById("sorting").value,
     isHot: "true",
+    findValue: "",
 }
 
 export async function getJson() {
@@ -22,12 +25,35 @@ export async function getJson() {
     });
 }
 
-export function createGoodsArr(jsonObj) {
+function createGoodsArr(jsonObj) {
     let goodsArr = [];
-    
-    for (let i = 0; jsonObj[i]; i++) {
-        if ((filterOne.category == undefined || filterOne.category == jsonObj[i].category)) {
-            goodsArr.push(new Good(jsonObj[i]));
+
+    if (filterOne.ativeFirstFilter) {
+        for (let i = 0; jsonObj[i]; i++) {
+            if ((filterOne.category == undefined || filterOne.category == jsonObj[i].category)) {
+                goodsArr.push(new Good(jsonObj[i]));
+            }
+        }
+    }
+    else if (filterOne.ativeSecondFilter) {
+        let boxes = $('input[type="checkbox"]:checked');
+        
+        for (let i = 0; jsonObj[i]; i++) {
+            for (let j = 0; j < 8; j++) {
+                if (boxes[j] != undefined) {
+                    if (jsonObj[i].category == boxes[j].getAttribute("id").toLowerCase() && 
+                        +jsonObj[i].price >= +filterOne.priceStart 
+                        && +jsonObj[i].price <= +filterOne.priceEnd) {
+                        goodsArr.push(new Good(jsonObj[i]));
+                    }
+                }
+            }
+        }
+    }
+    else if (filterOne.findValue != "") {
+        for (let i = 0; jsonObj[i]; i++) {
+            if (jsonObj[i].name.toLowerCase().includes(filterOne.findValue))
+                goodsArr.push(new Good(jsonObj[i]));
         }
     }
     return goodsArr;
@@ -48,14 +74,18 @@ export let goodsInterface = {
     currentPage: 0,
     startIndex: 0,
     renderCards: function(goodsArr) {
+        if (goodsArr[0]) {
         document.getElementsByClassName("mid-r-content")[0].innerHTML="";
         let maxGoodsOnePage = 12;
 
         this.startIndex = this.currentPage * maxGoodsOnePage;
         for (let i = this.startIndex; i < this.startIndex + maxGoodsOnePage; i++) {
-            if (goodsArr[i])
+            if (goodsArr[i]) {
                 goodCard.renderCard(goodsArr[i]);
+            }
         }
+    }
+    return 
     },
     changePage: function (value) {
         this.currentPage = value;
@@ -67,6 +97,8 @@ export let goodsInterface = {
         getCatalogElem.addEventListener("mouseup", function (event) {
             let getTextValue = event.target.textContent.toLowerCase().trim();
             filterOne.ativeFirstFilter = true;
+            filterOne.ativeSecondFilter = false;
+            filterOne.ativeFindFilter = false;
             filterOne.isHot = "false";
             filterOne.category = getTextValue;
             
@@ -79,15 +111,38 @@ export let goodsInterface = {
         let getApplyBtn = document.getElementsByClassName("apply-filter")[0];
 
         getApplyBtn.addEventListener("click", function () {
-            let firstPrice = document.getElementById("first-price");
+            let priceStart = document.getElementById("first-price");
             let secondPrice = document.getElementById("second-price");
-            let boxes = $('input[type="checkbox"]:checked');
+            let getHeadCategory = document.getElementsByClassName("head-r-content")[0].children[0];
 
-            console.log(boxes[1]);
-            
-                        
+            getHeadCategory.innerHTML = "Custom";
+            filterOne.ativeSecondFilter = true;
+            filterOne.ativeFirstFilter = false;
+            filterOne.ativeFindFilter = false;
+            filterOne.priceStart = priceStart.value;
+            filterOne.priceEnd = secondPrice.value;
 
-        })
+            let goodsArr = createGoodsArr(jsonObj);
+            goodsInterface.renderCards(goodsArr);
+        });
+    },
+    findFilter: function (jsonObj) {
+        let getFindBtn = document.querySelector(".search-btn");
         
-    }
+        getFindBtn.addEventListener("click", function() {
+
+            filterOne.ativeFirstFilter = false;
+            filterOne.ativeSecondFilter = false;
+            filterOne.ativeFindFilter = true;
+            filterOne.findValue = document.querySelector(".search").value.trim().toLowerCase();
+
+            let goodsArr = createGoodsArr(jsonObj);
+            goodsInterface.renderCards(goodsArr);
+        })
+    },
+    resetAllPage: function () {
+        $(".logo").click(function () {
+            location.reload();
+        });
+    },
 }

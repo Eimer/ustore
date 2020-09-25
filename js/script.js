@@ -1,8 +1,5 @@
 "use strict"
 
-import {Good} from "./goods.js";
-import {goodCard} from "./goods.js";
-import {createGoodsArr} from "./interfaces.js";
 import {dropContent} from "./supporting.js";
 import {goodsInterface} from "./interfaces.js";
 import {getJson} from "./interfaces.js";
@@ -42,6 +39,9 @@ AllGoods()
     goodsInterface.renderCards(goodsArr);
     goodsInterface.chooseCategory(jsonObj);
     goodsInterface.chooseFilter(jsonObj);
+    goodsInterface.findFilter(jsonObj);
+    goodsInterface.resetAllPage();
+    
     
     // test.addEventListener("click", chooseCategory);
     
