@@ -19,9 +19,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap" rel="stylesheet">
   <title>ustore</title>
   <script src="js/jQuery.js"></script>
-  <script type="module" src="./js/goods.js"></script>
-  <script type="module" src="./js/supporting.js"></script>
-  <script type="module" src="./js/interfaces.js"></script>
 </head>
 
 <body>
@@ -41,7 +38,7 @@
     <div class="header-two">
       <div class="logo">
         <img src="assets/images/buy.png" alt="error_logo">
-        <span>BuyToDie</sapn>
+        <span>BuyToDie</span>
       </div>
       <div class="search-block">
         <input type="text" class="search">
@@ -51,8 +48,39 @@
         <img src="assets/images/bucket.png" alt="error_bucket">
         <div class="bucket-down">
           <div class="bucket-items">
-
+            <!-- <span class="empty">Your bucket is empty:(</span> -->
+            <!-- <div class="good-bucket">
+              <img src="assets/images/goods/computers/artline_x35v14_images_9213247106.jpg" alt="error_img">
+              <span class="bucket-name">Samsung Galaxy M31s 6/128 GB Blue (SM-M317FZBNSEK)</span>
+              <span class="bucket-price">12886$</span>
+              <input type="button" value="-" class="minus">
+            </div>
+            <div class="good-bucket">
+              <img src="assets/images/goods/computers/artline_x35v14_images_9213247106.jpg" alt="error_img">
+              <span class="bucket-name">123</span>
+              <span class="bucket-price">12886$</span>
+              <input type="button" value="-" class="minus">
+            </div>
+            <div class="good-bucket">
+              <img src="assets/images/goods/computers/artline_x35v14_images_9213247106.jpg" alt="error_img">
+              <span class="bucket-name">123</span>
+              <span class="bucket-price">12886$</span>
+              <input type="button" value="-" class="minus">
+            </div>
+            <div class="good-bucket">
+              <img src="assets/images/goods/computers/artline_x35v14_images_9213247106.jpg" alt="error_img">
+              <span class="bucket-name">123</span>
+              <span class="bucket-price">12886$</span>
+              <input type="button" value="-" class="minus">
+            </div>
+            <div class="good-bucket">
+              <img src="assets/images/goods/computers/artline_x35v14_images_9213247106.jpg" alt="error_img">
+              <span class="bucket-name">123</span>
+              <span class="bucket-price">12886$</span>
+              <input type="button" value="-" class="minus">
+            </div> -->
           </div>
+
         </div>
       </div>
     </div>
@@ -102,7 +130,8 @@
             <div class="f-price">
               <input type="number" name="first-price" min="0" , max="99999" value="0" maxlength="5" id="first-price">
               &mdash;
-              <input type="number" name="second-price" min="0" , max="99999" value="99999" maxlength="5" id="second-price">
+              <input type="number" name="second-price" min="0" , max="99999" value="99999" maxlength="5"
+                id="second-price">
             </div>
             <div class="good-list">
               <ul>
@@ -291,7 +320,11 @@
     </div>
   </footer>
   </div>
+
+  <script type="module" src="js/script.js"></script>
+  <script type="module" src="./js/goods.js"></script>
+  <script type="module" src="./js/supporting.js"></script>
+  <script type="module" src="./js/interfaces.js"></script>
 </body>
-<script type="module" src="js/script.js"></script>
 
 </html>

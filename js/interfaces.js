@@ -1,6 +1,7 @@
 "use strict"
 import {goodCard} from "./goods.js";
 import {Good} from "./goods.js";
+import {createBucketCard} from "./supporting.js";
 
 let filterOne = {
     ativeFirstFilter: false,
@@ -138,6 +139,7 @@ export let goodsInterface = {
 
             let goodsArr = createGoodsArr(jsonObj);
             goodsInterface.renderCards(goodsArr);
+            goodsInterface.addCard();
         })
     },
     resetAllPage: function () {
@@ -145,4 +147,15 @@ export let goodsInterface = {
             location.reload();
         });
     },
+    addCard: function () {
+        $(".plus").click(function () {
+            let getGoodParent = $(this).parents()[1];
+            let getGoodImgSrc = getGoodParent.children[0].children[0].getAttribute("src");
+            let getGoodPrice = getGoodParent.children[3].children[0].innerHTML;
+            let getGoodName = getGoodParent.children[2].children[0].innerHTML;
+            let insertDiv = createBucketCard();
+
+            console.log(getGoodName);
+        });
+    }
 }

@@ -54,3 +54,23 @@ export function dropContent() {
         }
     });
 }
+
+export function createBucketCard () {
+    let goodBucketDiv = document.createElement("div");
+    let goodBucketImg = document.createElement("img");
+    let goodBucketName = document.createElement("span");
+    let goodBucketPrice = document.createElement("span");
+    let goodBucketBtn = document.createElement("input");
+
+    setCssAttr(goodBucketDiv, "class", "good-bucket");
+    setCssAttr(goodBucketName, "class", "bucket-name");   
+    setCssAttr(goodBucketPrice, "class", "bucket-price");
+    setCssAttr(goodBucketBtn, "class", "minus");
+    setCssAttr(goodBucketBtn, "value", "-");
+    setCssAttr(goodBucketBtn, "type", "button");
+    addElem(goodBucketDiv, goodBucketImg);
+    addElem(goodBucketDiv, goodBucketName);
+    addElem(goodBucketDiv, goodBucketPrice);
+    addElem(goodBucketDiv, goodBucketBtn);
+    return goodBucketDiv;
+}

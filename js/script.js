@@ -5,7 +5,6 @@ import {goodsInterface} from "./interfaces.js";
 import {getJson} from "./interfaces.js";
 import {firstCreateGoodsArr} from "./interfaces.js";
 
-
 // let parseJson = {
 //     getName: function(DATA) {
 
@@ -41,9 +40,8 @@ AllGoods()
     goodsInterface.chooseFilter(jsonObj);
     goodsInterface.findFilter(jsonObj);
     goodsInterface.resetAllPage();
-    
-    
-    // test.addEventListener("click", chooseCategory);
+    // goodsInterface.addCard();
+
     
 
     // let good1 = new Good(jsonObj[0]);
