@@ -1,7 +1,9 @@
 "use strict"
 import {goodCard} from "./goods.js";
 import {Good} from "./goods.js";
-import {createBucketCard} from "./supporting.js";
+import {createBucketCard, setCssAttr, addElem} from "./supporting.js";
+
+let count_items = 0;
 
 let filterOne = {
     ativeFirstFilter: false,
@@ -60,6 +62,19 @@ function createGoodsArr(jsonObj) {
     return goodsArr;
 }
 
+export function firstFillBucket () {
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let bucketCard = createBucketCard();
+        let getJson = JSON.parse(localStorage.getItem(key));
+        setCssAttr(bucketCard.children[0], "src", getJson.src);
+        bucketCard.children[1].innerHTML = getJson.name;
+        bucketCard.children[2].innerHTML = getJson.price;
+        addElem($(".bucket-items"), bucketCard);
+    }
+    goodsInterface.removeCard();
+}
+
 export function firstCreateGoodsArr(jsonObj) {
     let goodsArr = [];
     
@@ -76,17 +91,17 @@ export let goodsInterface = {
     startIndex: 0,
     renderCards: function(goodsArr) {
         if (goodsArr[0]) {
-        document.getElementsByClassName("mid-r-content")[0].innerHTML="";
-        let maxGoodsOnePage = 12;
+            document.getElementsByClassName("mid-r-content")[0].innerHTML="";
+            let maxGoodsOnePage = 12;
 
-        this.startIndex = this.currentPage * maxGoodsOnePage;
-        for (let i = this.startIndex; i < this.startIndex + maxGoodsOnePage; i++) {
-            if (goodsArr[i]) {
-                goodCard.renderCard(goodsArr[i]);
+            this.startIndex = this.currentPage * maxGoodsOnePage;
+            for (let i = this.startIndex; i < this.startIndex + maxGoodsOnePage; i++) {
+                if (goodsArr[i]) {
+                    goodCard.renderCard(goodsArr[i]);
+                }
             }
         }
-    }
-    return 
+        goodsInterface.addCard();
     },
     changePage: function (value) {
         this.currentPage = value;
@@ -106,7 +121,7 @@ export let goodsInterface = {
             let goodsArr = createGoodsArr(jsonObj);
             goodsInterface.renderCards(goodsArr);
             getHeadCategory.innerHTML = event.target.textContent;
-        });    
+        });
     },
     chooseFilter: function (jsonObj) {
         let getApplyBtn = document.getElementsByClassName("apply-filter")[0];
@@ -139,7 +154,6 @@ export let goodsInterface = {
 
             let goodsArr = createGoodsArr(jsonObj);
             goodsInterface.renderCards(goodsArr);
-            goodsInterface.addCard();
         })
     },
     resetAllPage: function () {
@@ -149,13 +163,47 @@ export let goodsInterface = {
     },
     addCard: function () {
         $(".plus").click(function () {
+            let toLocalStorage = {
+                name: "",
+                price: "",
+                src: "",
+            }
             let getGoodParent = $(this).parents()[1];
             let getGoodImgSrc = getGoodParent.children[0].children[0].getAttribute("src");
-            let getGoodPrice = getGoodParent.children[3].children[0].innerHTML;
+            let getGoodPrice
+            if (getGoodParent.children[3] == undefined) {
+                getGoodPrice = getGoodParent.children[2].children[0].innerHTML;
+                }
+            else {
+                getGoodPrice = getGoodParent.children[3].children[0].innerHTML;
+            }
             let getGoodName = getGoodParent.children[2].children[0].innerHTML;
             let insertDiv = createBucketCard();
 
-            console.log(getGoodName);
+            toLocalStorage.name = getGoodName;
+            toLocalStorage.price = getGoodPrice;
+            toLocalStorage.src = getGoodImgSrc;
+
+            localStorage.setItem("object" + count_items, JSON.stringify(toLocalStorage));
+            count_items++;
+            insertDiv.children[1].innerHTML = getGoodName;
+            insertDiv.children[2].innerHTML = getGoodPrice;
+            setCssAttr(insertDiv.children[0],"src", getGoodImgSrc);
+            addElem($(".bucket-items"), insertDiv);
+            goodsInterface.removeCard();
+        });
+    },
+    
+    removeCard: function () {
+        $(".minus").click(function() {
+            $(this).parent()[0].remove();
+            for (let i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i);
+                if (JSON.parse(localStorage.getItem(key)).name == $(this).parent()[0].children[1].innerHTML) {
+                    localStorage.removeItem(key);
+                    break;
+                }
+            }
         });
     }
 }

@@ -4,12 +4,13 @@ import {dropContent} from "./supporting.js";
 import {goodsInterface} from "./interfaces.js";
 import {getJson} from "./interfaces.js";
 import {firstCreateGoodsArr} from "./interfaces.js";
+import {firstFillBucket} from "./interfaces.js";
 
 // let parseJson = {
 //     getName: function(DATA) {
 
 //     }
-// }
+    // }
 //
 
 // async function getJson() {
@@ -23,13 +24,18 @@ import {firstCreateGoodsArr} from "./interfaces.js";
 //     });
 // }
 
+firstFillBucket();
+
+
+
 async function AllGoods() {
     let allGoods = await getJson();
     return allGoods;
 }
 
 // starting main script
-
+// localStorage.clear();
+firstFillBucket
 dropContent();
 AllGoods()
 .then((jsonObj)=>{
@@ -40,10 +46,6 @@ AllGoods()
     goodsInterface.chooseFilter(jsonObj);
     goodsInterface.findFilter(jsonObj);
     goodsInterface.resetAllPage();
-    // goodsInterface.addCard();
-
-    
-
     // let good1 = new Good(jsonObj[0]);
 
     // goodCard.renderCard(good1);
