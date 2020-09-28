@@ -4,7 +4,6 @@ import {Good} from "./goods.js";
 import {createBucketCard, setCssAttr, addElem} from "./supporting.js";
 
 let count_items = 0;
-
 let filterOne = {
     ativeFirstFilter: false,
     ativeSecondFilter: false,
@@ -90,6 +89,8 @@ export let goodsInterface = {
     currentPage: 0,
     startIndex: 0,
     renderCards: function(goodsArr) {
+
+        goodsInterface.changePage(goodsArr);
         if (goodsArr[0]) {
             document.getElementsByClassName("mid-r-content")[0].innerHTML="";
             let maxGoodsOnePage = 12;
@@ -103,14 +104,37 @@ export let goodsInterface = {
         }
         goodsInterface.addCard();
     },
-    changePage: function (value) {
-        this.currentPage = value;
+    resetPage: function () {
+        let getPageNumber = document.getElementById("page-number");
+        getPageNumber.innerHTML = String(1);
+    },
+    changePage: function (goodsArr) {
+        let getPageNumber = document.getElementById("page-number");
+        $("#right").off();
+        $("#left").off();
+        $("#right").on("click",function () {
+        
+            if (goodsInterface.currentPage < goodsArr.length / 12 - 1) {
+                goodsInterface.currentPage++;
+                getPageNumber.innerHTML = String(goodsInterface.currentPage + 1);
+                goodsInterface.renderCards(goodsArr);
+            }
+        });
+        $("#left").click(function () {
+            if (goodsInterface.currentPage > 0) {
+                goodsInterface.currentPage--;
+                getPageNumber.innerHTML = String(goodsInterface.currentPage + 1);
+                goodsInterface.renderCards(goodsArr);
+            }
+        });
     },
     chooseCategory: function (jsonObj) {
         let getCatalogElem = document.getElementsByClassName("catalog-list")[0];
         let getHeadCategory = document.getElementsByClassName("head-r-content")[0].children[0];
-
+        
         getCatalogElem.addEventListener("mouseup", function (event) {
+            goodsInterface.currentPage = 0;
+            goodsInterface.resetPage();
             let getTextValue = event.target.textContent.toLowerCase().trim();
             filterOne.ativeFirstFilter = true;
             filterOne.ativeSecondFilter = false;
@@ -127,6 +151,8 @@ export let goodsInterface = {
         let getApplyBtn = document.getElementsByClassName("apply-filter")[0];
 
         getApplyBtn.addEventListener("click", function () {
+            goodsInterface.currentPage = 0;
+            goodsInterface.resetPage();
             let priceStart = document.getElementById("first-price");
             let secondPrice = document.getElementById("second-price");
             let getHeadCategory = document.getElementsByClassName("head-r-content")[0].children[0];
@@ -146,7 +172,8 @@ export let goodsInterface = {
         let getFindBtn = document.querySelector(".search-btn");
         
         getFindBtn.addEventListener("click", function() {
-
+            goodsInterface.currentPage = 0;
+            goodsInterface.resetPage();
             filterOne.ativeFirstFilter = false;
             filterOne.ativeSecondFilter = false;
             filterOne.ativeFindFilter = true;
@@ -193,7 +220,6 @@ export let goodsInterface = {
             goodsInterface.removeCard();
         });
     },
-    
     removeCard: function () {
         $(".minus").click(function() {
             $(this).parent()[0].remove();

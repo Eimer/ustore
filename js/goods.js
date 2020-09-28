@@ -29,7 +29,6 @@ export let goodCard = {
         setCssAttr(this.goodAddDiv, "class", "plus");
     },
     renderCard: function(Good) {
-
         this.createCard();
         this.setCssClasses(Good);
         this.goodParentSection = document.getElementsByClassName("mid-r-content")[0];
